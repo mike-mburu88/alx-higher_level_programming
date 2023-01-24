@@ -2,7 +2,7 @@
 """create the class Square"""
 class Square:
     """provide the attribute for the class"""
-    def __init__(self,size=0):
+    def __init__(self, size=0):
         """initialize the arguments"""
         if type(size) is int:
             if size < 0:
