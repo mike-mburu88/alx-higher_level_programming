@@ -6,10 +6,11 @@ class Rectangle:
     """Define the class
     attributes:
     __size (int): size of a side of the rectangle"""
-    def __init__(self, size):
+    def __init__(self, width=0, height=0):
         """method to initialize a rectangle
         args:
-        siz(int): size of a rectagle side
+        height: size of a rectagle side
+        width: size of the shorter rectangle side
         Returns: None
         """
         self.height = height
@@ -37,7 +38,7 @@ class Rectangle:
             """private instance attribute height getter"""
             return self.__height
         @height.setter
-        def height(self, value)
+        def height(self, value):
             """private instance attribute height getter"""
             if type(value) is not int:
                 raise TypeError("height must be an integer")
