@@ -1,0 +1,12 @@
+#!/usr/bin/python3
+"""Contains the class BaseGeometry"""
+
+
+
+class BaseGeometry:
+    """defines the class with instance methods area and integer validator"""
+
+
+    def area(self):
+        """an exception is raised when this method is called"""
+        
