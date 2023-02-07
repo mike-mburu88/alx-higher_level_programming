@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-"""function that writes a string to a text file (UTF8)"""
+"""create a modlule to write a text into a file"""
 
 def write_file(filename="", text=""):
-    
-    """returns the number of chars written to "filename" from "text" """
-    
-    with open(filename, 'w', encoding='utf=8') as f:
-        
-        return f.write(text)
+    """Write text to filename with arguments str"""
+    with open(filename, 'w', encoding='utf8') as f:
+         return f.write(text)
