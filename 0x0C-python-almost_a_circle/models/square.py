@@ -1,42 +1,38 @@
 #!/usr/bin/python3
 
-"""Module containing Square class"""
+
+"""
+
+This module contains the "Square" class
+
+"""
 
 from models.rectangle import Rectangle
 
 
-
-
-
 class Square(Rectangle):
     
-    """Class to represent a square deriving from Rectangle"""
+    """Represent a square."""
+    
+
     
     def __init__(self, size, x=0, y=0, id=None):
         
-        """Initialize new square with width and height equal to `size`.
+        """Initialize a new Square.
 
         Args:
 
-            size (int): side lengths of square
+            size (int): The size of the new Square.
 
-            x (int): width offset for drawing square
+            x (int): The x coordinate of the new Square.
 
-            y (int): height offset for drawing square
+            y (int): The y coordinate of the new Square.
 
-            id: identifier for instance. If None, then object count.
-
-        Raises:
-
-            TypeError: If args are not int (or None for id)
-
-            ValueError: If size is <= 0 or x, y and < 0 or id < 0
+            id (int): The identity of the new Square.
 
         """
         
-        super().__init__(size, size, x=x, y=y, id=id)
-        
-        self.size = size
+        super().__init__(size, size, x, y, id)
         
 
         
@@ -44,19 +40,7 @@ class Square(Rectangle):
     
     def size(self):
         
-        """Getter/setter for size propetry.
-
-        Uses width attribute from Rectangle parent to store `size`.
-
-        Raises:
-
-            TypeError: If `size` is not an int.
-
-            ValueError: If `size` is <= 0.
-
-        Returns: value associated with `size`.
-
-        """
+        """Get/set the size of the Square."""
         
         return self.width
     
@@ -66,88 +50,113 @@ class Square(Rectangle):
     
     def size(self, value):
         
-        """Setter for `size`."""
+        self.width = value
         
-        setattr(self, "width", value)
+        self.height = value
         
 
         
-    def __str__(self):
-        
-        """Returns string representation of Square instance.
-
-        Example:
-
-            >>> s = Square(3, 4, 8, 9) # --> (size, x, y, id)
-
-            >>> print(s)
-
-            [Square] (9) 4/8 - 3
-
-        """
-        
-        return "[{:s}] ({:d}) {:d}/{:d} - {:d}".format(
-            
-            self.__class__.__name__,
-            
-            self.id,
-            
-            self.x, self.y,
-            
-            self.size
-            
-        )
-    
-
-    
     def update(self, *args, **kwargs):
         
-        """Update Square instances with *args and **kwargs.
+        """Update the Square.
 
-        Order of *args is 'id', 'size', 'x', 'y'. **kwargs can be in
+        Args:
 
-        any order.
+            *args (ints): New attribute values.
 
-        Example:
+                - 1st argument represents id attribute
 
-            >>> s = Square(1)
+                - 2nd argument represents size attribute
 
-            >>> args = [6]; kwargs = {"size": 4, "y": 3}
+                - 3rd argument represents x attribute
 
-            >>> s.update(*args, **kwargs)
+                - 4th argument represents y attribute
 
-            >>> print(s)
-
-            [Square] (6) 0/3 - 4
+            **kwargs (dict): New key/value pairs of attributes.
 
         """
         
-        attrs = ["id", "size", "x", "y"]
-        
-        for attr, arg in zip(attrs, args):
+        if args and len(args) != 0:
             
-            setattr(self, attr, arg)
+            a = 0
             
-        for k, v in kwargs.items():
-            
-            setattr(self, k, v)
-            
+            for arg in args:
+                
+                if a == 0:
+                    
+                    if arg is None:
+                        
+                        self.__init__(self.size, self.x, self.y)
+                        
+                    else:
+                        
+                        self.id = arg
+                        
+                elif a == 1:
+                    
+                    self.size = arg
+                    
+                elif a == 2:
+                    
+                    self.x = arg
+                    
+                elif a == 3:
+                    
+                    self.y = arg
+                    
+                a += 1
 
-            
+
+         elif kwargs and len(kwargs) != 0:
+             
+            for k, v in kwargs.items():
+                
+                if k == "id":
+                    
+                    if v is None:
+                        
+                        self.__init__(self.size, self.x, self.y)
+                        
+                    else:
+                        
+                        self.id = v
+                        
+                elif k == "size":
+                    
+                    self.size = v
+                    
+                elif k == "x":
+                    
+                    self.x = v
+                    
+                elif k == "y":
+                    
+                    self.y = v
+                    
+
+                    
     def to_dictionary(self):
         
-        """Return dictionary representation of writable attributes.
-
-        Example:
-
-            >>> s = Square(1, 2, 3, 4)
-
-            >>> s.to_dictionary()
-
-            {"id": 4, "size": 1, "x": 2, "y": 3}
-
-        """
+        """Return the dictionary representation of the Square."""
         
-        attrs = ["id", "size", "x", "y"]
+        return {
+            
+            "id": self.id,
+            
+            "size": self.width,
+            
+            "x": self.x,
+            
+            "y": self.y
+            
+        }
+    
+
+    
+    def __str__(self):
         
-        return {k: getattr(self, k) for k in attrs}
+        """Return the print() and str() representation of a Square."""
+        
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
+                                                 
+                                                 self.width)
