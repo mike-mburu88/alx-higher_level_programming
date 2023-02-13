@@ -3,7 +3,7 @@
 
 """
 
-This module contains the "Square" class
+sets the module that contains the "Square" class
 
 """
 

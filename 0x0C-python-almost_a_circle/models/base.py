@@ -127,7 +127,7 @@ class Base:
     
     def create(cls, **dictionary):
         
-        """Return a class instantied from a dictionary of attributes.
+        """Return a class instantiated from a dictionary of attributes.
 
         Args:
 
