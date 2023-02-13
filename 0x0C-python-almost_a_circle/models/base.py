@@ -97,7 +97,7 @@ class Base:
                 jsonfile.write(Base.to_json_string(list_dicts))
 
 
- @staticmethod
+    @staticmethod
  
     def from_json_string(json_string):
         
