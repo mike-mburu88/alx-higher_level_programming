@@ -2,20 +2,20 @@
 class Rectangle {
   constructor (w, h) {
     if ((w > 0) && (h > 0)) {
-      this.width = w;
-      this.height = h;
+      this.width = w
+      this.height = h
     }
   }
 
   print () {
     for (let m = 0; m < this.height; m++) {
-      let s = '';
+      let s = ''
       for (let l = 0; l < this.width; l++) {
-        s += 'X';
+        s += 'X'
       }
-      console.log(s);
+      console.log(s)
     }
   }
 }
-	   
-module.exports = Rectangle;
+
+module.exports = Rectangle
