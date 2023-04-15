@@ -6,14 +6,10 @@ name of the database
 and connects to the local host and port no. 3306
 """
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
     c = db.cursor()
-    c.execute("SELECT * FROM 'states'")
-    rows = c.fetchall()
-    for row in rows:
-        print(row)
-    c.close
-    db.close
+    c.execute("SELECT * FROM states ORDER BY states.id ASC")
+    [print(state) for state in c.fetchall()]
