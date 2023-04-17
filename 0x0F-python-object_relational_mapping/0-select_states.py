@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """The script takes in three arguments from the database:
 username
-password 
-name of the database 
+password
+name of the database
 and connects to the local host and port no. 3306
 """
 import MySQLdb
