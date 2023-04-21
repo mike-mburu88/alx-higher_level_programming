@@ -23,5 +23,5 @@ class State(Base):
         id: column of a unique set of integers that cant be NULL(primary key
 """
     __tablename__ = 'states'
-    name = Column(String(128), nullable=False)
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    name = Column(String(128), nullable=False)
