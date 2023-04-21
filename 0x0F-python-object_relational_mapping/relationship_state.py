@@ -8,6 +8,7 @@ from sqlalchemy import Column, Integer, String
 from relationship_city import Base, City
 from sqlalchemy.orm import relationship
 
+Base = declarative_base()
 class State(Base):
     """Represents a state for a MySQL database.
     Attributes:
@@ -16,7 +17,7 @@ class State(Base):
         name (sqlalchemy.String): The state's name.
         cities (sqlalchemy.orm.relationship): The State-City relationship.
     """
-    __tablename__ = "states"
+    __tablename__ = 'states'
     id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
 

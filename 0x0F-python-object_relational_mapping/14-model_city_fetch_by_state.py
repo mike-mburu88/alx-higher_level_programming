@@ -7,7 +7,7 @@ database name
 Connects to a localhost default port 3306
 """
 from sqlalchemy import (create_engine)
-from sqlaclhemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import aliased
 from model_state import State, Base
 from model_city import City
