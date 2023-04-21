@@ -4,9 +4,11 @@ State and inherits from the base class as a declarative class while using Alchem
 """
 
 from sqlalchemy.ext.declarative import declarative_base
-import sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String
+from sqlalchemy import create_engine
+import sys 
 
-base = declarative base()
+Base = declarative_base()
 
 class State(Base):
     """State class inherits  from base and links 
@@ -19,4 +21,4 @@ class State(Base):
 """
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
-    id = Column(Integer, primary_key=true, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
