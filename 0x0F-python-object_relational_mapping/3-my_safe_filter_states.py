@@ -13,5 +13,13 @@ import MySQLdb
 if __name__ == "__main__":
     db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
     c = db.cursor()
-    c.execute("SELECT * FROM 'states'")
-    [print(state for state in c.fetchall() if state[1] == argv[4])
+    parameter = (argv[4], )
+    c.execute("SELECT * FROM states WHERE name = %s\
+            ORDER BY states.id ASC", parameter)
+    rows = c.fetchall()
+
+    for row in rows:
+        print(row)
+
+    c.close()
+    db.close()
