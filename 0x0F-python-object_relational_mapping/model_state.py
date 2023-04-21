@@ -1,17 +1,20 @@
 #!/usr/bin/python3
-"""a python class that contains a class definition of a state database 
-State and inherits from the base class as a declarative class while using Alchemy
+"""a python class that contains a class
+definition of a state database
+State and inherits from the base class as a
+declarative class while using Alchemy
 """
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
-import sys 
+import sys
 
 Base = declarative_base()
 
+
 class State(Base):
-    """State class inherits  from base and links 
+    """State class inherits  from base and links
     to the MySQL table 'states'
 
 
