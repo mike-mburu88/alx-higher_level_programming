@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""A code that takes the state name as an argument and list the cities of the state
+"""A code that takes the state name as an argument
+and list the cities of the state
 takes 3 arguments:
 username
 password
@@ -11,7 +12,17 @@ import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connection(user=argv[1], passwd=argv[2], db=argv[3])
+    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
     c = db.cursor()
-    c.execute("SELECT * FROM 'cities' INNER JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY citie.id ASC")
-print(", ".join([ct[2] for ct in c.fetchall() if ct[4] == sys.argv[4]]))
+    Query1 = " ".join([
+        "SELECT cities.name FROM cities",
+        "INNER JOIN states ON states.id = cities.state_id",
+        "WHERE states.name LIKE BINARY '{}'",
+        "ORDER BY cities.id",
+        ]).format(argv[4])
+    c.execute(Query1)
+    res = c.fetchall()
+    strRes = ', '.join([x[0] for x in res])
+    print(strRes)
+    c.close()
+    db.close()
