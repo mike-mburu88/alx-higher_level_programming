@@ -4,7 +4,7 @@ and sends a POST request to a website
 address with the specified port
 """
 from sys import argv
-import requests
+from requests import get, post
 
 if __name__ == '__main__':
     try:
@@ -12,7 +12,7 @@ if __name__ == '__main__':
             l = ""
         else:
             l = argv[1]
-        s = post("http://0.0.0.0:5000/search_user", data =['q': letter})
+        s = post("http://0.0.0.0:5000/search_user", data ={'q': l})
         t = s.json()
         if not t:
             print("No Result")

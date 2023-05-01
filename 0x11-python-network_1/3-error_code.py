@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """"python script to take a URL,
-ssend a request to the URL and 
+send a request to the URL and
 return the body of the response in utf-8
 """
 from sys import argv

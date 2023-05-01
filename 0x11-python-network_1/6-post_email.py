@@ -5,9 +5,10 @@ the passed URL displaying the body of the
 response
 """
 from sys import argv
-import requests
+from requests import post
 if __name__ == "__main__":
-    link = argv[1]
-    mvalue = ("email: {}".format(argv[2]))
-    s = requests.post(link, mvalue)
-    print(s.text)
+    try:
+        s = post(argv[1], data={'email: {}'.format(argv[2])})
+        print(s.text)
+    except Exception as m:
+        print(m)

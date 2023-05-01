@@ -9,5 +9,5 @@ import requests
 
 if __name__ == "__main__":
     link = argv[1]
-    l = requests.get(link)
-    print(l.headers.get("X-Request-Id"))
+    output = requests.get(link)
+    print(output.headers.get("X-Request-Id"))
